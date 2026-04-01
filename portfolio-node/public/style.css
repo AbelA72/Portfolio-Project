@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --bg: #f7dada;
+  --surface: #ffffff;
+  --text: #2a0505;
+  --header-bg: #8b0000;
+  --nav-bg: #8b0000;
+  --footer-bg: #8b0000;
+  --accent: #5c0000;
+  --border: #c97a7a;
+  --nav-offset: 7rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  color: var(--text);
+  font-style: normal;
+  font-weight: 400;
+}
+
+html {
+  scroll-padding-top: var(--nav-offset);
+}
+
+body {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+header {
+  background: var(--header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: #2a0505;
+  padding: 1rem 1.5rem;
+  border-bottom: 4px solid var(--accent);
+}
+
+header h1 {
+  margin: 0 0 0.75rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--nav-bg);
+  border-radius: 8px;
+}
+
+nav a {
+  color: #2a0505;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent);
+}
+
+main {
+  max-width: 1000px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+section {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  scroll-margin-top: var(--nav-offset);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+.flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.flex-list > li {
+  flex: 1 1 220px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+#hobbies .flex-list > li {
+  flex: 0 0 200px;
+  width: 200px;
+}
+
+.highlight {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+input,
+textarea {
+  border: 1px solid #c97a7a;
+  border-radius: 6px;
+  padding: 0.6rem;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+input[type="submit"] {
+  width: fit-content;
+  background: var(--header-bg);
+  color: #fff;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #5c0000;
+  border-color: var(--accent);
+}
+
+input[type="submit"]:active {
+  background: #3a0000;
+  border-color: var(--accent);
+  transform: scale(0.96);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+}
+
+#upload h2,
+#upload h3,
+#upload #documents-list {
+  width: 100%;
+}
+
+#document-upload,
+#upload-btn {
+  min-height: 3.25rem;
+  font: inherit;
+}
+
+#document-upload {
+  flex: 1 1 20rem;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+}
+
+#upload-btn {
+  padding: 0 1.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--header-bg);
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#upload-btn:hover {
+  background: var(--accent);
+}
+
+#upload-btn:active {
+  background: #3a0000;
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#skills-quiz input[type="text"] {
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  height: 2.8rem;
+  vertical-align: middle;
+}
+
+#skills-quiz button {
+  height: 2.8rem;
+  padding: 0 1.5rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--header-bg);
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 0.2s ease;
+}
+
+#skills-quiz button:hover {
+  background: var(--accent);
+}
+
+#skills-quiz button:active {
+  background: #3a0000;
+  transform: scale(0.96);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+  background: var(--footer-bg);
+  color: #2a0505;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-top: 4px solid var(--accent);
+}
+
+
+/* Tablet */
+@media (max-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  main {
+    margin: 1rem auto;
+    padding: 0 0.75rem;
+    gap: 0.75rem;
+  }
+
+  section {
+    padding: 0.875rem;
+  }
+
+  .flex-list > li {
+    flex: 1 1 180px;
+  }
+
+  #hobbies .flex-list > li {
+    flex: 0 0 200px;
+    width: 200px;
+  }
+
+  #document-upload,
+  #upload-btn {
+    width: 100%;
+  }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+
+  header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding: 0.4rem;
+  }
+
+  nav a {
+    text-align: center;
+    padding: 0.6rem;
+  }
+
+  main {
+    margin: 0.75rem auto;
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+  }
+
+  section {
+    padding: 0.75rem;
+  }
+
+  .flex-list {
+    flex-direction: column;
+  }
+
+  .flex-list > li {
+    flex: 1 1 100%;
+  }
+
+  #hobbies .flex-list > li {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+  }
+}

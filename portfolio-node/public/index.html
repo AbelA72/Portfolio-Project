@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>About Me</h1>
+      <nav aria-label="Main navigation">
+        <a href="#about" title="About Me">About</a>
+        <a href="#projects" title="My Projects">Projects</a>
+        <a href="#hobbies" title="My Hobbies">Hobbies</a>
+        <a href="contact.html" title="Contact Me">Contact Page</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2 id="about-heading">About Me</h2>
+        <img src="profile_pic.jpg" alt="My portrait" width="200" height="300">
+        <p class="highlight">
+          My name is Abel Alemayehu and I am a Senior in Computer Science. I have
+          experience in project management and software development. I want to be
+          a software developer and improve the technological industry and software 
+          development back home so I can help people make their dreams easier to 
+          reach and make a positive impact on their lives.
+        </p>
+        
+      </section>
+
+      <section id="projects">
+        <h2>My Projects</h2>
+        <p>Here are some of my projects:</p>
+        <ul class="flex-list">
+          <li> <h3>Project 1: Type checker</h3>
+            <ul>
+              <p>Implemented a type checker for a simple programming language. Handled multiple data types and type inference. The link is <a href="https://github.com/usfca-cs345-f25/polyfluoride-AbelA72">here</a>.</p>
+            </ul>
+          </li>
+          <li> <h3>Project 2: Interpreter</h3>
+            
+              <p>Built an interpreter for a language. Implemented features such as variables, loops, and functions. The link is <a href="https://github.com/usfca-cs345-f25/bismuth-fixed-AbelA72">here</a>.</p>
+            
+          </li>
+          <li> <h3>Project 3: Circuit Analyzer</h3>
+            <ul>
+              <p>Developed a circuit to analyze machine code. Implemented algorithms for reading and interpreting machine instructions. The link is <a href="https://github.com/usf-cs315-s25/project05-AbelA72">here</a>.</p>
+            </ul>
+        </ul>
+      </section>
+
+      <section id="skills-quiz">
+        <h2>Skills Quiz</h2>
+        <input type = "text" id = "username" placeholder="Enter your name">
+        <input type = "text" id = "age" placeholder="Enter your age">
+        <button id = "startQuiz">Start Quiz size</button>
+
+        <p id="greeting"></p>
+        <p id="age-check"></p>
+        <p id="skills-list"></p>
+
+      </section>
+
+      <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <p>In my free time, I enjoy:</p>
+        <ul class="flex-list">
+          <li>Playing Video Games with Friends</li>
+          <li>Playing Soccer with Friends</li>
+          <li>Going on walks with Family</li>
+          <li>Cooking meals and baking desserts for Family</li>
+          <li>Watching Movies and TV Shows</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p> Abel Alemayehu </p>
+    </footer>
+    <script src="script.js"></script> 
+  </body>
+</html>
