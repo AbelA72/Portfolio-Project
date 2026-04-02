@@ -31,9 +31,18 @@
         <form id="contact-form">
           <label for="messages">Message:</label>
           <textarea id="messages" name="messages" rows="4"></textarea>
+
+          <label for="retrieval-method">Retrieval Method:</label>
+          <select id="retrieval-method" name="retrievalMethod">
+            <option value="semantic">Semantic (Embeddings)</option>
+            <option value="tfidf">TF-IDF (Keyword)</option>
+          </select>
+
           <input type="submit" id="submit-btn" value="Submit">
         </form>
         <div id="response"></div>
+        <div id="retrieved-docs"></div>
+        <div id="confidence-metrics"></div>
       </section>
     </main>
 

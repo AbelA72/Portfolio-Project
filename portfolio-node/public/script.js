@@ -117,12 +117,15 @@ document.getElementById('contact-form').addEventListener('submit', function(even
   event.preventDefault(); // Prevent the default page reload on submit
 
   const userPrompt = document.getElementById('messages').value;
+  const retrievalMethod = document.getElementById('retrieval-method').value;
   const responseDiv = document.getElementById('response');
+  const retrievedDocsDiv = document.getElementById('retrieved-docs');
+  const confidenceDiv = document.getElementById('confidence-metrics');
 
   fetch('/submit-prompt', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages: userPrompt })
+    body: JSON.stringify({ input: userPrompt, retrievalMethod: retrievalMethod })
   })
     .then(function(response) {
       if (!response.ok) {
@@ -133,8 +136,47 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       return response.json();
     })
     .then(function(data) {
-      // Display the chatbot's response in the response div
+      // Display the chatbot's response
       responseDiv.textContent = data.botResponse;
+
+      // Display retrieved evidence
+      retrievedDocsDiv.innerHTML = '';
+      if (data.retrievedDocuments && data.retrievedDocuments.length > 0) {
+        const heading = document.createElement('h3');
+        heading.textContent = 'Retrieved Evidence';
+        retrievedDocsDiv.appendChild(heading);
+
+        data.retrievedDocuments.forEach(function(doc, i) {
+          const item = document.createElement('div');
+          item.style.border = '1px solid #ccc';
+          item.style.padding = '8px';
+          item.style.marginBottom = '6px';
+          item.innerHTML =
+            '<strong>[' + (i + 1) + '] ' + (doc.docName || 'Unknown') + ' — Chunk ' + doc.chunkIndex + '</strong>' +
+            '<br>Relevance Score: ' + (doc.relevanceScore ? doc.relevanceScore.toFixed(4) : 'N/A') +
+            '<br><em>' + doc.chunkText + '</em>';
+          retrievedDocsDiv.appendChild(item);
+        });
+      } else {
+        retrievedDocsDiv.innerHTML = '<p>No documents retrieved.</p>';
+      }
+
+      // Display confidence metrics
+      confidenceDiv.innerHTML = '';
+      if (data.confidenceMetrics) {
+        const m = data.confidenceMetrics;
+        const heading = document.createElement('h3');
+        heading.textContent = 'Confidence Metrics';
+        confidenceDiv.appendChild(heading);
+
+        const info = document.createElement('p');
+        info.innerHTML =
+          'Method: <strong>' + m.retrievalMethod + '</strong><br>' +
+          'Overall Confidence: <strong>' + (m.overallConfidence * 100).toFixed(1) + '%</strong><br>' +
+          'Retrieval Confidence: ' + (m.retrievalConfidence * 100).toFixed(1) + '%' +
+          (m.responseConfidence !== null ? '<br>Response Confidence: ' + (m.responseConfidence * 100).toFixed(1) + '%' : '');
+        confidenceDiv.appendChild(info);
+      }
     })
     .catch(function(error) {
       // Log the error and show a message to the user

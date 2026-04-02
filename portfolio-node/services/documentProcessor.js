@@ -52,21 +52,14 @@ class DocumentProcessor {
    * @returns {string} Extracted text
    */
   async extractPdfText(filePath) {
-    let parser;
-
     try {
-      parser = new PDFParse({ data: await fs.readFile(filePath) });
+      const dataBuffer = await fs.readFile(filePath);
+      const parser = new PDFParse({ data: new Uint8Array(dataBuffer), verbosity: 0 });
       const pdfData = await parser.getText();
       return pdfData.text;
     } catch (error) {
       console.error('Error extracting PDF text:', error);
       throw new Error('Failed to parse PDF file');
-    } finally {
-      if (parser && typeof parser.destroy === 'function') {
-        await parser.destroy().catch((cleanupError) => {
-          console.error('Error cleaning up PDF parser:', cleanupError);
-        });
-      }
     }
   }
 
